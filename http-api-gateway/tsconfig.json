@@ -19,6 +19,7 @@
     "noFallthroughCasesInSwitch": false
   },
   "watchOptions": {
+    // Usually helpful for Windows OS
     // Use a dynamic polling instead of system's native events for file changes
     "watchFile": "dynamicPriorityPolling",
     "watchDirectory": "dynamicPriorityPolling",
