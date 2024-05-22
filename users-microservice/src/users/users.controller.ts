@@ -7,6 +7,6 @@ export class UsersMicroserviceController {
   @MessagePattern({ cmd: 'createUser' })
   createUser(@Payload() data: CreateUserDto) {
     console.log(data);
-    return data;
+    return { msg: 'Success' };
   }
 }
