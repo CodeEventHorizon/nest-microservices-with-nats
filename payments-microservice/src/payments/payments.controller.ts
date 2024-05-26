@@ -8,5 +8,6 @@ export class PaymenentsMicroserviceController {
   @EventPattern('createPayment')
   createPayment(@Payload() createPaymentDto: CreatePaymentDto) {
     console.log(createPaymentDto);
+    this.natsClient.emit('paymentCreated', createPaymentDto);
   }
 }
