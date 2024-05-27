@@ -8,16 +8,23 @@ services:
     command: npm run start:dev
     environment:
       - PORT=3000
+    depends_on:
+      - users_microservice
+      - payments_microservice
   users_microservice:
     build: ./users-microservice
     volumes:
       - ./users-microservice/src:/usr/src/app/src
     command: npm run start:dev
+    depends_on:
+      - mysql_db
   payments_microservice:
     build: ./payments-microservice
     volumes:
       - ./payments-microservice/src:/usr/src/app/src
     command: npm run start:dev
+    depends_on:
+      - mysql_db
   nats:
     image: nats
     ports:
