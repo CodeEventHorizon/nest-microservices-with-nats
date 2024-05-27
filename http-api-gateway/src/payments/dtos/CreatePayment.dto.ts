@@ -4,4 +4,7 @@ export class CreatePaymentDto {
   @IsNumber()
   @IsNotEmpty()
   amount: number;
+
+  @IsNotEmpty()
+  userId: string;
 }
