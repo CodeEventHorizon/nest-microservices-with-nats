@@ -1,4 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Payment } from './Payment';
 
 @Entity({ name: 'users' })
 export class User {
@@ -13,4 +20,8 @@ export class User {
 
   @Column({ nullable: true })
   displayName?: string;
+
+  @OneToMany(() => Payment, (payment) => payment.user)
+  @JoinColumn()
+  payments: Payment[];
 }
