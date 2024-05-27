@@ -14,4 +14,11 @@ export class UsersService {
     const newUser = this.usersRepository.create(createUserDto);
     return this.usersRepository.save(newUser);
   }
+
+  getUserById(userId: string) {
+    return this.usersRepository.findOne({
+      where: { id: userId },
+      relations: ['payments'],
+    });
+  }
 }
