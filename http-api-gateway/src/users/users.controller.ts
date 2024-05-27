@@ -1,4 +1,4 @@
-import { Body, Controller, Inject, Post } from '@nestjs/common';
+import { Body, Controller, Get, Inject, Param, Post } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { CreateUserDto } from './dtos/CreateUser.dto';
 
@@ -9,5 +9,10 @@ export class UsersController {
   createUser(@Body() createUserDto: CreateUserDto) {
     console.log(createUserDto);
     return this.natsClient.send({ cmd: 'createUser' }, createUserDto);
+  }
+
+  @Get(':id')
+  getUserById(@Param('id') id: string) {
+    return this.natsClient.send({ cmd: 'getUserById' }, { userId: id });
   }
 }
